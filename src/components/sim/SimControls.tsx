@@ -33,13 +33,13 @@ export function StatusPill({
       <span
         role="status"
         aria-live="polite"
-        className={`rounded border px-2.5 py-1 font-mono text-xs uppercase tracking-wide ${STATUS_TONE[status]}`}
+        className={`rounded-md border px-3 py-1 text-xs font-semibold uppercase tracking-wider ${STATUS_TONE[status]}`}
       >
         {STATUS_LABEL[status]}
       </span>
       {status !== 'invalid' && (
-        <span className="font-mono text-xs text-slate-500">
-          Step {index} of {Math.max(total - 1, 0)}
+        <span className="text-xs font-medium text-slate-500">
+          Step <span className="font-mono text-slate-800 font-semibold">{index}</span> of <span className="font-mono text-slate-800 font-semibold">{Math.max(total - 1, 0)}</span>
         </span>
       )}
     </div>
@@ -47,7 +47,7 @@ export function StatusPill({
 }
 
 const btn =
-  'inline-flex items-center gap-2 rounded border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 shadow-sm transition-colors hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-slate-200 disabled:hover:bg-white disabled:hover:text-slate-700';
+  'inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 shadow-sm transition-all hover:border-indigo-300 hover:bg-indigo-50/70 hover:text-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-slate-200 disabled:hover:bg-white disabled:hover:text-slate-700';
 
 export function SimControls<S>({ stepper }: { stepper: Stepper<S> }) {
   const playing = stepper.status === 'running';

@@ -71,17 +71,17 @@ export function ValueChip({
   }[tone];
 
   const bgClass = {
-    neutral: 'bg-white border-slate-200',
-    amber:   'bg-amber-50 border-amber-200',
-    cyan:    'bg-blue-50 border-blue-200',
-    red:     'bg-red-50 border-red-200',
-    indigo:  'bg-indigo-50 border-indigo-200',
+    neutral: 'bg-white border-slate-200/90 shadow-xs',
+    amber:   'bg-amber-50/70 border-amber-200 shadow-xs',
+    cyan:    'bg-blue-50/70 border-blue-200 shadow-xs',
+    red:     'bg-red-50/70 border-red-200 shadow-xs',
+    indigo:  'bg-indigo-50/70 border-indigo-200 shadow-xs',
   }[tone];
 
   return (
-    <div className={`min-w-0 rounded border px-3 py-2 ${bgClass}`}>
-      <p className="font-mono text-[11px] uppercase tracking-wide text-slate-500">{label}</p>
-      <p className={`mt-1 break-all font-mono text-sm font-medium ${toneClass}`}>{value}</p>
+    <div className={`min-w-0 rounded-lg border px-3.5 py-2.5 ${bgClass}`}>
+      <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-500 font-sans">{label}</p>
+      <p className={`mt-1 break-all font-mono text-sm font-semibold ${toneClass}`}>{value}</p>
     </div>
   );
 }
@@ -112,7 +112,7 @@ export function Field({
 }
 
 export const inputClass =
-  'w-full rounded border border-slate-200 bg-white px-3 py-2 font-mono text-sm text-slate-800 placeholder:text-slate-400 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-100 transition-colors';
+  'w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2 font-mono text-sm text-slate-800 placeholder:text-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100 transition-all shadow-xs';
 
 export function Segmented<T extends string | number>({
   label,
@@ -136,10 +136,10 @@ export function Segmented<T extends string | number>({
             role="radio"
             aria-checked={active}
             onClick={() => onChange(o.value)}
-            className={`rounded border px-3 py-1.5 font-mono text-xs transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-500 ${
+            className={`rounded-lg border px-3 py-1.5 text-xs font-medium transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-500 ${
               active
-                ? 'border-indigo-400 bg-indigo-50 text-indigo-700 font-medium'
-                : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-800'
+                ? 'border-indigo-400 bg-indigo-50 text-indigo-800 font-semibold shadow-xs'
+                : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50 hover:text-slate-800'
             }`}
           >
             {o.label}
