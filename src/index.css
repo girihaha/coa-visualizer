@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    color-scheme: light;
+  }
+  body {
+    @apply bg-slate-50 text-slate-900 font-sans antialiased;
+    line-height: 1.5;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-indigo-500/60 ring-offset-2 ring-offset-white;
+  }
+  h1, h2, h3 {
+    line-height: 1.2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes step-enter {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cell-flash {
+  0% { box-shadow: 0 0 0 0 rgb(99 102 241 / 0.35); }
+  100% { box-shadow: 0 0 0 7px rgb(99 102 241 / 0); }
+}
+
+@keyframes flow-pulse {
+  0%, 100% { stroke-opacity: 1; }
+  50% { stroke-opacity: 0.5; }
+}
+
+@keyframes bit-change {
+  0% { background-color: rgb(224 231 255); }   /* indigo-100 */
+  100% { background-color: rgb(248 250 252); }  /* slate-50 */
+}
+
+.step-enter {
+  animation: step-enter 280ms ease-out both;
+}
+
+.cell-flash {
+  animation: cell-flash 550ms ease-out;
+}
+
+.flow-active {
+  animation: flow-pulse 1.4s ease-in-out infinite;
+}
+
+.bit-change {
+  animation: bit-change 700ms ease-out;
+}
+
+/* Academic table styles */
+.sim-table {
+  @apply w-full border-collapse text-sm;
+}
+.sim-table th {
+  @apply bg-slate-100 px-3 py-2 text-left text-xs font-semibold uppercase tracking-wide text-slate-500 border border-slate-200;
+}
+.sim-table td {
+  @apply px-3 py-2 border border-slate-200 text-slate-700;
+}
+.sim-table tr:nth-child(even) td {
+  @apply bg-slate-50;
+}
+.sim-table tr.active-row td {
+  @apply bg-indigo-50 text-indigo-900 font-medium;
+}
+.sim-table td.mono {
+  @apply font-mono text-xs text-slate-800;
+}
+
+/* Pipeline table */
+.pipeline-table {
+  @apply border-collapse font-mono text-xs;
+}
+.pipeline-table th {
+  @apply px-2 py-1.5 text-left text-slate-500 font-medium border-b border-slate-200;
+}
+.pipeline-table td {
+  @apply h-9 w-11 text-center align-middle border border-slate-100;
+}
